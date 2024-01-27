@@ -6,5 +6,5 @@ public class DriveConstants {
     public static final int frMotorId = 12;
     public static final int brMotorId = 13;
 
-
+//Update these ^ as kitbot gets wired 
 }

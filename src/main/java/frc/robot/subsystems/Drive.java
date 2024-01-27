@@ -16,6 +16,7 @@ public class Drive extends SubsystemBase {
   private final WPI_TalonSRX blMotor = new WPI_TalonSRX(DriveConstants.blMotorId);
   private final WPI_TalonSRX frMotor = new WPI_TalonSRX(DriveConstants.frMotorId);
   private final WPI_TalonSRX brMotor = new WPI_TalonSRX(DriveConstants.brMotorId);
+  //Update Constants.DriveConstants when Id updates 
 
   private final MecanumDrive drive = new MecanumDrive(flMotor,blMotor,frMotor,brMotor);
   
