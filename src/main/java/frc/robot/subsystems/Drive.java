@@ -8,14 +8,14 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import org.littletonrobotics.junction.AutoLog;
 import org.littletonrobotics.junction.Logger;
-import frc.constants.DriveConstants;
+import frc.robot.constants.DriveConstants;
 
 
 public class Drive extends SubsystemBase {
-  private final WPI_TalonSRX flMotor = new WPI_TalonSRX(flMotorId);
-  private final WPI_TalonSRX blMotor = new WPI_TalonSRX(11);
-  private final WPI_TalonSRX frMotor = new WPI_TalonSRX(12);
-  private final WPI_TalonSRX brMotor = new WPI_TalonSRX(13);
+  private final WPI_TalonSRX flMotor = new WPI_TalonSRX(DriveConstants.flMotorId);
+  private final WPI_TalonSRX blMotor = new WPI_TalonSRX(DriveConstants.blMotorId);
+  private final WPI_TalonSRX frMotor = new WPI_TalonSRX(DriveConstants.frMotorId);
+  private final WPI_TalonSRX brMotor = new WPI_TalonSRX(DriveConstants.brMotorId);
 
   private final MecanumDrive drive = new MecanumDrive(flMotor,blMotor,frMotor,brMotor);
   
