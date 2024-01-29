@@ -23,8 +23,8 @@ public class Drive extends SubsystemBase {
   public Drive() {
     flMotor.setInverted(false);
     blMotor.setInverted(false);
-    frMotor.setInverted(false);
-    brMotor.setInverted(false);
+    frMotor.setInverted(true);
+    brMotor.setInverted(true);
 
   }
 
