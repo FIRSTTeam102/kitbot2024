@@ -32,11 +32,11 @@ public class Robot extends LoggedRobot {
 			default -> "Unknown";
 		});
 
-    if (Robot.isReal()) {
-      setUseTiming(false); // run as fast as possible
-      String logPath = LogFileUtil.findReplayLog(); // pull replay log from AdvantageScope (or prompt the user)
-      Logger.setReplaySource(new WPILOGReader(logPath));
-      Logger.addDataReceiver(new WPILOGWriter(LogFileUtil.addPathSuffix(logPath, "_sim")));
+    if (!Robot.isReal()) {
+      // setUseTiming(false); // run as fast as possible
+      // String logPath = LogFileUtil.findReplayLog(); // pull replay log from AdvantageScope (or prompt the user)
+      // Logger.setReplaySource(new WPILOGReader(logPath));
+      // Logger.addDataReceiver(new WPILOGWriter(LogFileUtil.addPathSuffix(logPath, "_sim")));
     }
     else {
       Logger.addDataReceiver(new WPILOGWriter("/media/sda1/logs/")); // log to a usb stick

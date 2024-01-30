@@ -7,6 +7,8 @@ package frc.robot;
 import frc.constants.Constants.OperatorConstants;
 import frc.constants.Constants.ShuffleboardConstants;
 import frc.robot.commands.Autos;
+import frc.robot.commands.TeleopDrive;
+import frc.robot.subsystems.Drive;
 
 import org.littletonrobotics.junction.networktables.LoggedDashboardChooser;
 
@@ -25,6 +27,8 @@ public class RobotContainer {
 
   public LoggedDashboardChooser<Command> autoChooser = new LoggedDashboardChooser<>("autoChooser");
 
+  public Drive drive = new Drive();
+
   public RobotContainer() {
     configureBindings();
 
@@ -33,11 +37,12 @@ public class RobotContainer {
 
     var driveTab = Shuffleboard.getTab(ShuffleboardConstants.driveTab);
 
-    driveTab.add("auto selection", autoChooser).withSize(4, 1);
+    driveTab.add("auto selection", autoChooser.getSendableChooser()).withSize(4, 1);
   }
 
-  private void configureBindings() {
-
+  private void configureBindings() { 
+    
+    drive.setDefaultCommand(new TeleopDrive(drive, driverController.getHID()));
   }
 
   /**
