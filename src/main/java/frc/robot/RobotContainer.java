@@ -6,7 +6,10 @@ package frc.robot;
 
 import frc.constants.Constants.OperatorConstants;
 import frc.constants.Constants.ShuffleboardConstants;
+import frc.constants.ShooterConstants;
 import frc.robot.commands.Autos;
+
+import frc.robot.subsystems.shooter;
 
 import org.littletonrobotics.junction.networktables.LoggedDashboardChooser;
 
@@ -24,6 +27,8 @@ public class RobotContainer {
   public CommandXboxController driverController = new CommandXboxController(OperatorConstants.driverControllerPort);
 
   public LoggedDashboardChooser<Command> autoChooser = new LoggedDashboardChooser<>("autoChooser");
+
+  private final shooter shooter = new shooter();
 
   public RobotContainer() {
     configureBindings();

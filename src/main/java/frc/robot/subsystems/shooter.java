@@ -4,7 +4,7 @@
 
 package frc.robot.subsystems;
 
-import static frc.robot.constants.IntakeConstants;
+import static frc.constants.ShooterConstants.*;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
@@ -16,8 +16,8 @@ import org.littletonrobotics.junction.AutoLog;
 import org.littletonrobotics.junction.Logger;
 
 public class shooter extends SubsystemBase {
-  private CANSparkMax ShooterMotor = new CANSparkMax(1, CANSparkMax.MotorType.kBrushless);
-  private CANSparkMax HolderMotor = new CANSparkMax(2, CANSparkMax.MotorType.kBrushless);
+  private CANSparkMax ShooterMotor = new CANSparkMax(ShooterMotorID, CANSparkMax.MotorType.kBrushless);
+  private CANSparkMax HolderMotor = new CANSparkMax(HolderMotorID, CANSparkMax.MotorType.kBrushless);
   
   public shooter() {
     ShooterMotor.setInverted(false);
@@ -26,13 +26,19 @@ public class shooter extends SubsystemBase {
     HolderMotor.setIdleMode(CANSparkMax.IdleMode.kBrake);
   }
 
-  public void move(double speed) {
-    ShooterMotor.set(speed);
-    HolderMotor.set(speed);
+  public void setShooterMotorSpeed(double MotorSpeed) {
+    ShooterMotor.set(MotorSpeed);
   }
 
-  public void stop() {
+  public void setHolderMotorSpeed(double MotorSpeed) {
+    HolderMotor.set(MotorSpeed);
+  }
+
+  public void stopShooterMotor() {
     ShooterMotor.set(0);
+  }
+
+  public void stopHolderMotor() {
     HolderMotor.set(0);
   }
 
