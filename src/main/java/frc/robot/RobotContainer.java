@@ -8,7 +8,10 @@ import frc.constants.Constants.OperatorConstants;
 import frc.constants.Constants.ShuffleboardConstants;
 import frc.constants.ShooterConstants;
 import frc.robot.commands.Autos;
-
+import frc.robot.commands.StartShooter;
+import frc.robot.commands.StopShooter;
+import frc.robot.commands.Shoot;
+import frc.robot.commands.PassNote;
 import frc.robot.subsystems.shooter;
 
 import org.littletonrobotics.junction.networktables.LoggedDashboardChooser;
@@ -42,8 +45,8 @@ public class RobotContainer {
   }
 
   private void configureBindings() {
-
-  }
+driverController.a().onTrue(new StartShooter(shooter));
+ }
 
   /**
    * Use this to pass the autonomous command to the main {@link Robot} class.
