@@ -4,12 +4,12 @@
 
 package frc.robot;
 
-import frc.constants.Constants.OperatorConstants;
-import frc.constants.Constants.ShuffleboardConstants;
-import frc.constants.ShooterConstants;
 import frc.robot.commands.Autos;
 import frc.robot.commands.StartShooter;
 import frc.robot.commands.StopShooter;
+import frc.robot.constants.ShooterConstants;
+import frc.robot.constants.Constants.OperatorConstants;
+import frc.robot.constants.Constants.ShuffleboardConstants;
 import frc.robot.commands.Shoot;
 import frc.robot.commands.PassNote;
 import frc.robot.subsystems.shooter;

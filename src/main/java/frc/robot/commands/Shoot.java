@@ -4,12 +4,12 @@
 
 package frc.robot.commands;
 import frc.robot.subsystems.shooter;
-import frc.constants.ShooterConstants.*;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import frc.robot.commands.PassNote;
 import frc.robot.commands.StartShooter;
 import frc.robot.commands.StopShooter;
+import frc.robot.constants.ShooterConstants.*;
 
 
 // NOTE:  Consider using this command inline, rather than writing a subclass.  For more

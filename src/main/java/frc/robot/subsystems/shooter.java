@@ -4,13 +4,12 @@
 
 package frc.robot.subsystems;
 
-import static frc.constants.ShooterConstants.*;
-
-import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Robot;
 
 import com.revrobotics.CANSparkMax;
+
+import static frc.robot.constants.ShooterConstants.*;
 
 import org.littletonrobotics.junction.AutoLog;
 import org.littletonrobotics.junction.Logger;
