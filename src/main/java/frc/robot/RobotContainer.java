@@ -8,7 +8,9 @@ import frc.constants.Constants.OperatorConstants;
 import frc.constants.Constants.ShuffleboardConstants;
 import frc.constants.ShooterConstants;
 import frc.robot.commands.Autos;
-
+import frc.robot.commands.StartShooter;
+import frc.robot.commands.StopShooter;
+import frc.robot.commands.PassNote;
 import frc.robot.subsystems.shooter;
 
 import org.littletonrobotics.junction.networktables.LoggedDashboardChooser;
@@ -28,7 +30,7 @@ public class RobotContainer {
 
   public LoggedDashboardChooser<Command> autoChooser = new LoggedDashboardChooser<>("autoChooser");
 
-  private final shooter shooter = new shooter();
+  public final shooter shooter = new shooter();
 
   public RobotContainer() {
     configureBindings();
@@ -42,7 +44,9 @@ public class RobotContainer {
   }
 
   private void configureBindings() {
-
+    driverController.a().onTrue(new StartShooter(shooter));
+    driverController.x().onTrue(new StopShooter(shooter));
+    driverController.y().onTrue(new PassNote(shooter));
   }
 
   /**
