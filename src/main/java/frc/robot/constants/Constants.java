@@ -1,4 +1,4 @@
-package frc.constants;
+package frc.robot.constants;
 
 public final class Constants {
     public static class OperatorConstants {
