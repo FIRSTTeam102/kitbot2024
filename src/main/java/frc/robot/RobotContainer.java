@@ -31,7 +31,7 @@ public class RobotContainer {
 
   public LoggedDashboardChooser<Command> autoChooser = new LoggedDashboardChooser<>("autoChooser");
 
-  private final shooter shooter = new shooter();
+  public final shooter shooter = new shooter();
 
   public RobotContainer() {
     configureBindings();
@@ -45,8 +45,10 @@ public class RobotContainer {
   }
 
   private void configureBindings() {
-driverController.a().onTrue(new StartShooter(shooter));
- }
+    driverController.a().onTrue(new StartShooter(shooter));
+    driverController.x().onTrue(new StopShooter(shooter));
+    driverController.y().onTrue(new PassNote(shooter));
+  }
 
   /**
    * Use this to pass the autonomous command to the main {@link Robot} class.
