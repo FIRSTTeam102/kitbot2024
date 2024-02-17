@@ -31,7 +31,7 @@ public class RobotContainer {
 
   public LoggedDashboardChooser<Command> autoChooser = new LoggedDashboardChooser<>("autoChooser");
 
-  public final shooter shooter = new shooter();
+  public  shooter shooter  = new shooter();
 
   public RobotContainer() {
     configureBindings();
