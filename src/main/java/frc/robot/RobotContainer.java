@@ -33,7 +33,7 @@ public class RobotContainer {
 
     var driveTab = Shuffleboard.getTab(ShuffleboardConstants.driveTab);
 
-    driveTab.add("auto selection", autoChooser).withSize(4, 1);
+    driveTab.add("auto selection", autoChooser.getSendableChooser()).withSize(4, 1);
   }
 
   private void configureBindings() {
