@@ -1,5 +1,7 @@
 package frc.robot;
 
+import static frc.robot.constants.Constants.*;
+
 import org.littletonrobotics.junction.LogFileUtil;
 import org.littletonrobotics.junction.LoggedRobot;
 import org.littletonrobotics.junction.Logger;
@@ -12,6 +14,7 @@ import edu.wpi.first.wpilibj.PowerDistribution.ModuleType;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import frc.robot.constants.BuildConstants;
+import lombok.extern.java.Log;
 
 public class Robot extends LoggedRobot {
   private Command m_autonomousCommand;
@@ -31,17 +34,22 @@ public class Robot extends LoggedRobot {
 			case 1 -> "Dirty";
 			default -> "Unknown";
 		});
+    
+    switch (robotMode) {
+      case Replay -> {
+        setUseTiming(false);
+        String logPath = LogFileUtil.findReplayLog();
+        Logger.setReplaySource(new WPILOGReader(logPath));
+        Logger.addDataReceiver(new WPILOGWriter(LogFileUtil.addPathSuffix(logPath, "_sim")));
+      }
+      case Active -> {
+        Logger.addDataReceiver(new WPILOGWriter("/media/sda1/logs/"));
+        Logger.addDataReceiver(new NT4Publisher());
+        if (isReal()) 
+          new PowerDistribution(1, ModuleType.kCTRE);
+      }
+    }
 
-    if (!Robot.isReal()) {
-      // setUseTiming(false); // run as fast as possible
-      // String logPath = LogFileUtil.findReplayLog(); // pull replay log from AdvantageScope (or prompt the user)
-      // Logger.setReplaySource(new WPILOGReader(logPath));
-      // Logger.addDataReceiver(new WPILOGWriter(LogFileUtil.addPathSuffix(logPath, "_sim")));
-    }
-    else {
-      Logger.addDataReceiver(new WPILOGWriter("/media/sda1/logs/")); // log to a usb stick
-      Logger.addDataReceiver(new NT4Publisher()); // publish data to NetworkTables
-    }
 
     m_robotContainer = new RobotContainer();
 

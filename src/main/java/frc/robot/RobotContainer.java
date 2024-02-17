@@ -4,11 +4,11 @@
 
 package frc.robot;
 
-import frc.constants.Constants.OperatorConstants;
-import frc.constants.Constants.ShuffleboardConstants;
 import frc.robot.commands.Autos;
 import frc.robot.commands.TeleopDrive;
 import frc.robot.subsystems.Drive;
+import frc.robot.constants.Constants.OperatorConstants;
+import frc.robot.constants.Constants.ShuffleboardConstants;
 
 import org.littletonrobotics.junction.networktables.LoggedDashboardChooser;
 

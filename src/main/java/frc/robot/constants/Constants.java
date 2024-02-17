@@ -1,6 +1,12 @@
-package frc.constants;
+package frc.robot.constants;
 
 public final class Constants {
+    public static final RobotMode robotMode = RobotMode.Active;
+
+    public enum RobotMode {
+        Active, Replay;
+    }
+
     public static class OperatorConstants {
         public static final int driverControllerPort = 0;
     }
