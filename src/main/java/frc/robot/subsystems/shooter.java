@@ -7,7 +7,8 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Robot;
 
-import com.revrobotics.CANSparkMax;
+import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
 import static frc.robot.constants.ShooterConstants.*;
 
@@ -15,30 +16,29 @@ import org.littletonrobotics.junction.AutoLog;
 import org.littletonrobotics.junction.Logger;
 
 public class shooter extends SubsystemBase {
-  private CANSparkMax ShooterMotor = new CANSparkMax(ShooterMotorID, CANSparkMax.MotorType.kBrushless);
-  private CANSparkMax HolderMotor = new CANSparkMax(HolderMotorID, CANSparkMax.MotorType.kBrushless);
+  private TalonSRX ShooterMotor = new TalonSRX(ShooterMotorID);
+  private TalonSRX HolderMotor = new TalonSRX(HolderMotorID);
   
   public shooter() {
     ShooterMotor.setInverted(false);
     HolderMotor.setInverted(false);
 
-    HolderMotor.setIdleMode(CANSparkMax.IdleMode.kBrake);
   }
 
   public void setShooterMotorSpeed(double MotorSpeed) {
-    ShooterMotor.set(MotorSpeed);
+    ShooterMotor.set(ControlMode.PercentOutput,MotorSpeed);
   }
 
   public void setHolderMotorSpeed(double MotorSpeed) {
-    HolderMotor.set(MotorSpeed);
+    HolderMotor.set(ControlMode.PercentOutput,MotorSpeed);
   }
 
   public void stopShooterMotor() {
-    ShooterMotor.set(0);
+    ShooterMotor.set(ControlMode.PercentOutput,0);
   }
 
   public void stopHolderMotor() {
-    HolderMotor.set(0);
+    HolderMotor.set(ControlMode.PercentOutput,0);
   }
 
   @Override
@@ -60,11 +60,11 @@ public class shooter extends SubsystemBase {
 	public shooterIOInputsAutoLogged inputs = new shooterIOInputsAutoLogged();
 
 	private void updateInputs(shooterIOInputs inputs) {
-		inputs.ShooterMotorPercentOutput = Robot.isReal() ? ShooterMotor.getAppliedOutput() : ShooterMotor.get();
-		inputs.ShooterMotorCurrent_A = ShooterMotor.getOutputCurrent();
-		inputs.ShooterMotorTemperature_C = ShooterMotor.getMotorTemperature();
-    inputs.HolderMotorPercentOutput = Robot.isReal() ? HolderMotor.getAppliedOutput() : HolderMotor.get();
-		inputs.HolderMotorCurrent_A = HolderMotor.getOutputCurrent();
-		inputs.HolderMotorTemperature_C = HolderMotor.getMotorTemperature();
+		//inputs.ShooterMotorPercentOutput = Robot.isReal() ? ShooterMotor.getAppliedOutput() : ShooterMotor.get();
+		inputs.ShooterMotorCurrent_A = ShooterMotor.getSupplyCurrent();
+		inputs.ShooterMotorTemperature_C = ShooterMotor.getTemperature();
+    //inputs.HolderMotorPercentOutput = Robot.isReal() ? HolderMotor.getAppliedOutput(): HolderMotor.get();
+		inputs.HolderMotorCurrent_A = HolderMotor.getSupplyCurrent();
+		inputs.HolderMotorTemperature_C = HolderMotor.getTemperature();
 	}
 }
