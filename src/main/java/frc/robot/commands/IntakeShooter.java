@@ -3,13 +3,13 @@
 // the WPILib BSD license file in the root directory of this project.
 
 package frc.robot.commands;
-
-import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.subsystems.shooter;
+import edu.wpi.first.wpilibj2.command.Command;
 
-public class PassNote extends Command {
+public class IntakeShooter extends Command {
+  /** Creates a new StartShooter. */
   private shooter shooter;
-  public PassNote(shooter shooter) {
+  public IntakeShooter(shooter shooter) {
     addRequirements(shooter);
     this.shooter = shooter;
   }
@@ -17,7 +17,7 @@ public class PassNote extends Command {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    shooter.setHolderMotorSpeed(.8);
+    shooter.setShooterMotorSpeed(-.8);
   }
 
   // Called every time the scheduler runs while the command is scheduled.
@@ -27,7 +27,7 @@ public class PassNote extends Command {
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    shooter.stopHolderMotor();
+    shooter.stopShooterMotor();
   }
 
   // Returns true when the command should end.

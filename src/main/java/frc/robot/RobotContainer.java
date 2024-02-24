@@ -7,6 +7,7 @@ package frc.robot;
 import frc.robot.commands.Autos;
 import frc.robot.commands.StartShooter;
 import frc.robot.commands.StopShooter;
+import frc.robot.commands.IntakeShooter;
 import frc.robot.constants.ShooterConstants;
 import frc.robot.constants.Constants.OperatorConstants;
 import frc.robot.constants.Constants.ShuffleboardConstants;
@@ -45,9 +46,10 @@ public class RobotContainer {
   }
 
   private void configureBindings() {
-    driverController.a().onTrue(new StartShooter(shooter));
-    driverController.x().onTrue(new StopShooter(shooter));
-    driverController.y().onTrue(new PassNote(shooter));
+    driverController.rightTrigger().onTrue(new StartShooter(shooter));
+    driverController.rightBumper().onTrue(new StopShooter(shooter));
+    driverController.leftTrigger().whileTrue(new PassNote(shooter));
+    driverController.leftBumper().whileTrue(new IntakeShooter(shooter));
   }
 
   /**
