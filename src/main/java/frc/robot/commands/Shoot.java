@@ -16,10 +16,10 @@ import frc.robot.constants.ShooterConstants.*;
 // information, see:
 // https://docs.wpilib.org/en/stable/docs/software/commandbased/convenience-features.html
 public class Shoot extends SequentialCommandGroup {
-  private shooter shooter;
+  private shooter Shooter;
   public Shoot(shooter shooter) {
     addRequirements(shooter);
-    this.shooter = shooter;
+    this.Shooter = shooter;
     addCommands(
       new StartShooter(shooter),
       new PassNote(shooter),

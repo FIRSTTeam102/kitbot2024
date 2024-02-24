@@ -60,10 +60,10 @@ public class shooter extends SubsystemBase {
 	public shooterIOInputsAutoLogged inputs = new shooterIOInputsAutoLogged();
 
 	private void updateInputs(shooterIOInputs inputs) {
-		//inputs.ShooterMotorPercentOutput = Robot.isReal() ? ShooterMotor.getAppliedOutput() : ShooterMotor.get();
+		inputs.ShooterMotorPercentOutput = ShooterMotor.getMotorOutputPercent();
 		inputs.ShooterMotorCurrent_A = ShooterMotor.getSupplyCurrent();
 		inputs.ShooterMotorTemperature_C = ShooterMotor.getTemperature();
-    //inputs.HolderMotorPercentOutput = Robot.isReal() ? HolderMotor.getAppliedOutput(): HolderMotor.get();
+    inputs.HolderMotorPercentOutput = HolderMotor.getMotorOutputPercent();
 		inputs.HolderMotorCurrent_A = HolderMotor.getSupplyCurrent();
 		inputs.HolderMotorTemperature_C = HolderMotor.getTemperature();
 	}
