@@ -9,10 +9,12 @@ import frc.robot.commands.StartShooter;
 import frc.robot.commands.StopShooter;
 import frc.robot.commands.IntakeShooter;
 import frc.robot.constants.ShooterConstants;
+import frc.robot.commands.TeleopDrive;
 import frc.robot.constants.Constants.OperatorConstants;
 import frc.robot.constants.Constants.ShuffleboardConstants;
 import frc.robot.commands.Shoot;
 import frc.robot.commands.PassNote;
+import frc.robot.subsystems.Drive;
 import frc.robot.subsystems.shooter;
 
 import org.littletonrobotics.junction.networktables.LoggedDashboardChooser;
@@ -32,7 +34,9 @@ public class RobotContainer {
 
   public LoggedDashboardChooser<Command> autoChooser = new LoggedDashboardChooser<>("autoChooser");
 
-  public  shooter shooter  = new shooter();
+  public Drive drive = new Drive();
+  public shooter shooter  = new shooter();
+
 
   public RobotContainer() {
     configureBindings();
@@ -46,6 +50,8 @@ public class RobotContainer {
   }
 
   private void configureBindings() {
+    drive.setDefaultCommand(new TeleopDrive(drive, driverController.getHID()));
+  
     driverController.rightTrigger().onTrue(new StartShooter(shooter));
     driverController.rightBumper().onTrue(new StopShooter(shooter));
     driverController.leftTrigger().whileTrue(new PassNote(shooter));
